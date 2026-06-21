@@ -1,0 +1,83 @@
+========================================================================
+             CYCLE DE VIE GITHUB COMPLET (GITHUB FLOW)
+========================================================================
+
+Voici le résumé complet des commandes Git ordonnées selon le cycle de vie 
+standard d'une fonctionnalité (création, modification, push, PR et suppression).
+
+------------------------------------------------------------------------
+1. EN CHAÎNE : LE RÉSUMÉ DES COMMANDES DANS L'ORDRE
+------------------------------------------------------------------------
+
+# 1. Mettre à jour son projet local avant de commencer
+git checkout main
+git pull origin main
+
+# 2. Créer et basculer sur la nouvelle branche
+git checkout -b ma-nouvelle-feature
+
+# [ ... Vous codez vos modifications dans VS Code ... ]
+
+# 3. Indexer et enregistrer les modifications localement
+git add .
+git commit -m "Mon message explicite"
+
+# 4. Envoyer la branche sur GitHub (premier push)
+git push -u origin ma-nouvelle-feature
+
+# [ ... Vous allez sur GitHub pour créer et valider la Pull Request ... ]
+
+# 5. Nettoyer son espace local après le Merge sur GitHub
+git checkout main
+git pull origin main
+git branch -d ma-nouvelle-feature
+
+
+------------------------------------------------------------------------
+2. EXPLICATIONS DÉTAILLÉES PAR ÉTAPE
+------------------------------------------------------------------------
+
+ÉTAPES EN LOCAL (Terminal / VS Code) :
+-------------------------------------
+* git checkout main
+  Retourne sur la branche principale pour repartir sur une base propre.
+
+* git pull origin main
+  Récupère les derniers changements en ligne pour éviter les conflits de code.
+
+* git checkout -b <nom-de-la-branche>
+  Crée une nouvelle branche et bascule dessus immédiatement (ex: sprint0).
+
+* git add .
+  Prépare tous les fichiers modifiés pour le commit (l'indexation).
+  Pour un seul fichier : git add chemin/vers/le/fichier.java
+
+* git commit -m "Message explicite"
+  Enregistre un point de sauvegarde local contenant vos modifications.
+
+* git push -u origin <nom-de-la-branche>
+  Envoie la branche sur GitHub. Le "-u" lie la branche locale à GitHub 
+  uniquement pour le premier push. Après, un simple "git push" suffit.
+
+
+ÉTAPES EN LIGNE (Interface GitHub sur Navigateur) :
+--------------------------------------------------
+1. Cliquez sur le bouton vert "Compare & pull request" qui apparaît sur votre dépôt.
+2. Vérifiez la direction : base: main <- compare: <ta-branche>.
+3. Cliquez sur "Create pull request".
+4. Pour accepter et fusionner : cliquez sur le gros bouton vert "Merge pull request" 
+   puis validez avec "Confirm merge".
+5. Cliquez sur le bouton bleu "Delete branch" qui apparaît juste après pour nettoyer GitHub.
+
+
+NETTOYAGE DU CODE EN LOCAL :
+---------------------------
+* git checkout main
+  Recommencez le cycle en revenant sur main.
+
+* git pull origin main
+  Télécharge le code que vous venez tout juste de fusionner via la Pull Request.
+
+* git branch -d <nom-de-la-branche>
+  Supprime proprement la branche locale puisqu'elle a été fusionner et supprimée en ligne.
+========================================================================

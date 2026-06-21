@@ -1,12 +1,22 @@
 package main.java.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class FrontController extends HttpServlet {
+    private List<String> listClass;
+
+    // Dans FrontController.java — remplacer le init() vide par :
+    @Override
+    public void init() throws ServletException {
+        List<String> listFromContext = (List<String>) getServletContext().getAttribute("listClass");
+        this.setListClass(listFromContext);
+    }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -40,5 +50,13 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);
+    }
+
+    public List<String> getListClass() {
+        return listClass;
+    }
+
+    public void setListClass(List<String> listClass) {
+        this.listClass = listClass;
     }
 }
