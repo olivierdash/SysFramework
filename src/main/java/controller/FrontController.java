@@ -11,9 +11,11 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet {
     private List<String> listClass;
 
+    // Dans FrontController.java — remplacer le init() vide par :
     @Override
     public void init() throws ServletException {
-
+        List<String> listFromContext = (List<String>) getServletContext().getAttribute("listClass");
+        this.setListClass(listFromContext);
     }
 
     protected void processRequest(HttpServletRequest req, HttpServletResponse resp)
