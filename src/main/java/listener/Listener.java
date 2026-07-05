@@ -14,7 +14,7 @@ import main.java.utility.Utility;
 
 @WebListener
 public class Listener implements ServletContextListener {
-
+    // ajout du sprint 3
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
