@@ -31,16 +31,14 @@ public class Utility {
         return false;
     }
 
-    // Vérifie si l'annotation est présente n'importe où (classe, attribut ou
-    // méthode)
+    // Vérifie si l'annotation est présente n'importe où (classe, attribut ou méthode)
     public static boolean aAnnotation(Class<?> classe, Class<? extends Annotation> annotation) {
         return aAnnotationSurClasse(classe, annotation)
                 || aAnnotationSurAttribut(classe, annotation)
                 || aAnnotationSurMethode(classe, annotation);
     }
 
-    // Version qui prend le nom du package + le nom de la classe, comme demandé dans
-    // la todo
+    // Version qui prend le nom du package + le nom de la classe
     public static boolean aAnnotation(String packageName, String nomClasse, Class<? extends Annotation> annotation)
             throws ClassNotFoundException {
         Class<?> classe = Class.forName(packageName + "." + nomClasse);

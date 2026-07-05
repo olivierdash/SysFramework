@@ -9,12 +9,12 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
-import main.java.controller.AnnotationController;
+import main.java.annotation.AnnotationController;
 import main.java.utility.Utility;
 
 @WebListener
 public class Listener implements ServletContextListener {
-    // Dans Listener.java — remplacer tout le contenu de contextInitialized par :
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
