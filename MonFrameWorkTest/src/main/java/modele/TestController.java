@@ -41,4 +41,19 @@ public class TestController {
         mv.addAttribut("personne", p);
         return mv;
     }
+
+    @UrlMapping(url = "/salut3")
+    public ModelAndView salut3(Personne p1, Personne p2) {
+        ModelAndView mv = new ModelAndView("/salut3.jsp");
+        mv.addAttribut("p1", p1);
+        mv.addAttribut("p2", p2);
+        return mv;
+    }
+
+    @UrlMapping(url = "/form3Salut")
+    public ModelAndView form3(Personne p) {
+        ModelAndView mv = new ModelAndView("/form3.jsp");
+        mv.addAttribut("personne", p);
+        return mv;
+    }
 }
