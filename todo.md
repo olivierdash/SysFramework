@@ -118,4 +118,15 @@ Prise en charge des types de methode http (GET/POST)
             
 
 
-c
+## Sprint 8
+
+### Cote framework
+
+- Creation d'une classe MapFile:
+  - Attributs:
+    - Nom fichier
+    - type
+    - rectoCIN : bytes[] 
+    - verseauCIN: bytes[] 
+- On verifie si l'objet passe dans le formulaire contient l'attribut : MapFile.
+- Le chemin de repertoire d'emplacement des fichiers ne doit pas etre mis en dur mais ca doit etre stocke dans un autre fichier comme un .properties par exemple
