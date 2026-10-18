@@ -2,7 +2,7 @@ package main.java.modele;
 
 import com.sdm.framework.annotation.Controller;
 import com.sdm.framework.annotation.UrlMapping;
-import com.sdm.framework.modeles.Personne;
+import com.sdm.framework.constant.HttpMethod;
 import com.sdm.framework.outils.ModelAndView;
 
 @Controller
@@ -53,6 +53,18 @@ public class TestController {
     @UrlMapping(url = "/form3Salut")
     public ModelAndView form3(Personne p) {
         ModelAndView mv = new ModelAndView("/form3.jsp");
+        mv.addAttribut("personne", p);
+        return mv;
+    }
+
+    @UrlMapping(url = "/uploadForm")
+    public ModelAndView uploadForm() {
+        return new ModelAndView("/upload.jsp");
+    }
+
+    @UrlMapping(url = "/upload", method = HttpMethod.POST)
+    public ModelAndView upload(Personne p) {
+        ModelAndView mv = new ModelAndView("/uploadResult.jsp");
         mv.addAttribut("personne", p);
         return mv;
     }
