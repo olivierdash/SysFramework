@@ -130,3 +130,33 @@ Prise en charge des types de methode http (GET/POST)
     - verseauCIN: bytes[] 
 - On verifie si l'objet passe dans le formulaire contient l'attribut : MapFile.
 - Le chemin de repertoire d'emplacement des fichiers ne doit pas etre mis en dur mais ca doit etre stocke dans un autre fichier comme un .properties par exemple
+
+## Sprint 9 (session)
+
+### Cote framework
+
+- Creation d'une calsse personalise de HttpsSession qui contient les methodes de base d'une httpsession et une Map<String(nom de la session), Object(la valeur de la session)>
+- Lors du traitement du parametre de la methode, on instancie une nouvelle httpSession et on la met dans notre map.
+- Eviter de faire plusieurs instance de la classe personalisee a chaque requette en la mettant dans le contexte en utilisant la session id et on recupere l'instance s'il y en a deja dans le contexte.
+
+### Cote developpeur
+
+- Injection de la classe personalise de HttpSession dans le parametre de la methode du  controller.
+
+## Sprint 10 (authorisation)
+
+## cote framework
+
+### cote developpeur
+
+- il y a des methodes de controlleur qui ont besoin d'etre authentifies avant d'etre execute.
+- utilisation d'annotation @Auth
+- on utilise web.xml
+- une variable de session pour savoir si l'utilisateur est connecte 
+
+
+## sprint 10 bis
+
+### cote developpeur
+
+la metohode doit avoir un role avant d'etre executable, et on peut mettre plusieurs roles.
