@@ -4,6 +4,7 @@ import com.sdm.framework.annotation.Controller;
 import com.sdm.framework.annotation.UrlMapping;
 import com.sdm.framework.constant.HttpMethod;
 import com.sdm.framework.outils.ModelAndView;
+import com.sdm.framework.outils.MySession;
 
 @Controller
 public class TestController {
@@ -68,4 +69,29 @@ public class TestController {
         mv.addAttribut("personne", p);
         return mv;
     }
+
+    @UrlMapping(url = "/loginForm")
+    public ModelAndView loginForm() {
+        return new ModelAndView("/login.jsp");
+    }
+
+    @UrlMapping(url = "/login", method = HttpMethod.POST)
+    public ModelAndView login(String nom, MySession session) {
+        session.put("user", nom);
+        return new ModelAndView("/profil.jsp");
+    }
+
+    @UrlMapping(url = "/profil")
+    public ModelAndView profil(MySession session) {
+        ModelAndView mv = new ModelAndView("/profil.jsp");
+        mv.addAttribut("user", session.get("user"));
+        return mv;
+    }
+
+    @UrlMapping(url = "/logout")
+    public ModelAndView logout(MySession session) {
+        session.supprimer("user");
+        return new ModelAndView("/profil.jsp");
+    }
+
 }
