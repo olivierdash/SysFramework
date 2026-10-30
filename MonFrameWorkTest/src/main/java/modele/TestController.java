@@ -1,5 +1,6 @@
 package main.java.modele;
 
+import com.sdm.framework.annotation.Auth;
 import com.sdm.framework.annotation.Controller;
 import com.sdm.framework.annotation.UrlMapping;
 import com.sdm.framework.constant.HttpMethod;
@@ -76,13 +77,36 @@ public class TestController {
     }
 
     @UrlMapping(url = "/login", method = HttpMethod.POST)
-    public ModelAndView login(String nom, MySession session) {
+    public ModelAndView login(String nom, String role, MySession session) {
         session.put("user", nom);
+        session.put("roleUtilisateur", role);
         return new ModelAndView("/profil.jsp");
     }
 
+    // @UrlMapping(url = "/login")
+    // public ModelAndView login(String nom, MySession session) {
+    // session.put("user", nom);
+    // return new ModelAndView("/profil.jsp");
+    // }
+
     @UrlMapping(url = "/profil")
     public ModelAndView profil(MySession session) {
+        ModelAndView mv = new ModelAndView("/profil.jsp");
+        mv.addAttribut("user", session.get("user"));
+        return mv;
+    }
+
+    @Auth
+    @UrlMapping(url = "/profilDetail")
+    public ModelAndView profilDetail(MySession session) {
+        ModelAndView mv = new ModelAndView("/profilDetail.jsp");
+        mv.addAttribut("user", session.get("user"));
+        return mv;
+    }
+
+    @Auth(roles = { "Admin", "assistant" })
+    @UrlMapping(url = "/roleProfil")
+    public ModelAndView adminPage(MySession session) {
         ModelAndView mv = new ModelAndView("/profil.jsp");
         mv.addAttribut("user", session.get("user"));
         return mv;
