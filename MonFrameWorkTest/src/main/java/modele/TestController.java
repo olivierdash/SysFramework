@@ -89,12 +89,12 @@ public class TestController {
     // return new ModelAndView("/profil.jsp");
     // }
 
-    @UrlMapping(url = "/profil")
-    public ModelAndView profil(MySession session) {
-        ModelAndView mv = new ModelAndView("/profil.jsp");
-        mv.addAttribut("user", session.get("user"));
-        return mv;
-    }
+    // @UrlMapping(url = "/profil")
+    // public ModelAndView profil(MySession session) {
+    // ModelAndView mv = new ModelAndView("/profil.jsp");
+    // mv.addAttribut("user", session.get("user"));
+    // return mv;
+    // }
 
     @Auth
     @UrlMapping(url = "/profilDetail")
