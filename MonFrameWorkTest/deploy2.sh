@@ -18,6 +18,7 @@ if [ $? -ne 0 ]; then
     echo "Erreur de compilation !"
     exit 1
 fi
+cp src/main/ressources/framework.properties "$BUILD_DIR/WEB-INF/classes/"
 
 # Fichiers web (web.xml, JSP...)
 cp -r "$WEB_DIR"/* "$BUILD_DIR"/
