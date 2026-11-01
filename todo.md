@@ -160,3 +160,9 @@ Prise en charge des types de methode http (GET/POST)
 ### cote developpeur
 
 la metohode doit avoir un role avant d'etre executable, et on peut mettre plusieurs roles.
+
+## sprint 11
+
+### cote developper
+
+Ne plus instancier un nouveau controller a chaque fois.
